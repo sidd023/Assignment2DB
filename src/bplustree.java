@@ -1,8 +1,34 @@
+import java.io.FileOutputStream;
 
 public class bplustree {
 	
 	
+	private int maxKeys;
+	private Node root;
 	
-	// To be implemented
+	public int getMaxKey()
+	{
+		return maxKeys;
+	}
+	
+	public Node getroot()
+	{
+		return root;
+	}
+	
+	public void setRoot(Node root)
+	{
+		this.root = root;
+	}
+	
+	public bplustree()
+	{
+		maxKeys = constants.MAX_NUM_KEYS; 
+		root = new leafNode();
+	}
+	
+	public void insert(String key, String value) {
+		root.insert(key, value);
+	}
 
 }

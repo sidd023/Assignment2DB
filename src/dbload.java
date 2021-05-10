@@ -1,4 +1,4 @@
-import java.io.BufferedReader;
+import java.io.BufferedReader; 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
@@ -30,14 +30,34 @@ public class dbload {
      */
     public static void main(String[] args) throws IOException {
 
-        // check for correct number of arguments
-        if (args.length != constants.DBLOAD_ARG_COUNT) {
-            System.out.println("Error: Incorrect number of arguments were input");
-            return;
-        }
-
-        int pageSize = Integer.parseInt(args[constants.DBLOAD_PAGE_SIZE_ARG]);
-        String datafile = args[constants.DATAFILE_ARG];
+    	dbload load = new dbload();
+        
+        if (args.length == constants.DBLOAD_ARG_COUNT) {
+			if (args[0].equals("-p") && load.isInteger(args[1])) {
+				load.readFile(args[2], Integer.parseInt(args[1]));
+			}
+		} else {
+			System.out.println("Error: Incorrect number of arguments were input");
+		}
+        
+    }
+    
+    public boolean isInteger(String s) {
+		boolean isValidInt = false;
+		try {
+			Integer.parseInt(s);
+			isValidInt = true;
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		return isValidInt;
+	}
+    
+    
+    public void readFile(String filename, int pagesize) throws IOException
+    {
+    	int pageSize = pagesize;
+        String datafile = filename;
         String outputFileName = "heap." + pageSize;
         int numRecordsLoaded = 0;
         int numberOfPagesUsed = 0;
