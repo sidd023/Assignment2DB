@@ -30,5 +30,10 @@ public class bplustree {
 	public void insert(String key, String value) {
 		root.insert(key, value);
 	}
+	
+	// search for key or part of key
+		public void search(String key) {
+			root.search(key);
+		}
 
 }

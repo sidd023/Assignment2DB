@@ -31,6 +31,7 @@ public class dbload {
     public static void main(String[] args) throws IOException {
 
     	dbload load = new dbload();
+    	
         
         if (args.length == constants.DBLOAD_ARG_COUNT) {
 			if (args[0].equals("-p") && load.isInteger(args[1])) {
@@ -56,6 +57,7 @@ public class dbload {
     
     public void readFile(String filename, int pagesize) throws IOException
     {
+    	bplustree _bt = new bplustree();
     	int pageSize = pagesize;
         String datafile = filename;
         String outputFileName = "heap." + pageSize;
@@ -89,6 +91,7 @@ public class dbload {
             while ((line = reader.readLine()) != null) {
 
                 String[] valuesAsStrings = line.split(",");
+                System.out.println(valuesAsStrings.length);
 
                 // Convert data into relevant data types
                 int id = Integer.parseInt(valuesAsStrings[constants.ID_POS]);
@@ -100,8 +103,23 @@ public class dbload {
                 int time = Integer.parseInt(valuesAsStrings[constants.TIME_POS]);
                 String sensorIdString = valuesAsStrings[constants.SENSORID_POS];
                 String sensorName = valuesAsStrings[constants.SENSORNAME_POS];
-                int counts = Integer.parseInt(valuesAsStrings[constants.COUNTS_POS]);
-                String sdtName = sensorIdString + dateTimeString;
+                
+                int counts=0;
+                
+                if (valuesAsStrings.length == 11) {
+					String temp = valuesAsStrings[9];
+
+					temp = temp + valuesAsStrings[10];
+					temp = temp.replace("\"", "");
+					counts = Integer.parseInt(temp);
+				}
+                else {
+                 counts = Integer.parseInt(valuesAsStrings[constants.COUNTS_POS]);
+                }
+                
+                
+                String sdtName = sensorIdString + " " +dateTimeString;
+                System.out.println(sdtName);
                 int sensorId = Integer.parseInt(sensorIdString);
 
                 // parse datetime field into a date object, then get long datatype representation
@@ -134,6 +152,7 @@ public class dbload {
                     numberOfPagesUsed++;
                     byteOutputStream.reset();
                 }
+                _bt.insert(sdtName, Integer.toString(numberOfPagesUsed));
             }
 
             // At end of csv, check if there are records in the current page to be written out
@@ -147,6 +166,8 @@ public class dbload {
                 numberOfPagesUsed++;
                 byteOutputStream.reset();
             }
+            
+            
 
             finishTime = System.nanoTime();
         }

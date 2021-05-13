@@ -73,7 +73,26 @@ public class leafNode extends Node {
 			return values.size() > _bt.getMaxKey() - 1;
 		}
 		
-		
+		@Override
+		public void search(String key) {
+			// find text in key or part of key
+			visited = true;
+			for (int i = 0; i < keys.size(); i++) {
+				String s = keys.get(i); 
+				String v = values.get(i);
+				String k = key;
+				if (s.toLowerCase().contains(k.toLowerCase()) || s.compareTo(k)==0) {
+					System.out.println("Found in B+ Tree [" + k + "]: " + s + " - " + v);
+				}
+			}
+		}
+
+
+		@Override
+		public boolean isVisited() {
+			return visited;
+		}
+
 		
 
 		

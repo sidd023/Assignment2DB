@@ -15,6 +15,11 @@ public class innerNode extends Node {
 		}
 
 		@Override
+		public boolean isVisited() {
+			return visited;
+		}
+		
+		@Override
 		public void insert(String key, String value) {
 			Node child = getChild(key);
 			child.insert(key, value);
@@ -72,4 +77,17 @@ public class innerNode extends Node {
 		public boolean isOverflow() {
 			return children.size() > _bt.getMaxKey();
 		}
+
+		@Override
+		public void search(String key) {
+			// go through node + child to search for key or part of key
+			for (int i = 0; i < children.size(); i++) {
+				if (!children.get(i).isVisited()) {
+					children.get(i).search(key);
+					//System.out.println("Childresn " + children.get(i));
+					visited = true;
+				}
+			}
+		}
+
 	}
