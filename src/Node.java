@@ -20,6 +20,8 @@ public abstract class Node {
 		int keySize() {
 			return keys.size();
 		}
+
+		protected abstract void rangeSearch(String k1, String k2, int searchType);
 		
 	
 }

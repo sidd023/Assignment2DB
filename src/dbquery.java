@@ -28,6 +28,22 @@ public class dbquery {
 			_bt.search(args[1]);
 
 		}
+		else if (args.length == constants.DBQUERY_ARG_COUNT_BPLUS && args[0].equals("-bid")){
+			String range1 = "";
+			String range2 = "";
+			String key = args[1];
+			if (key.contains(constants.RANGE_DELIMITER)) {
+				String[] searchValues = key.split(constants.RANGE_DELIMITER);
+				range1 = searchValues[0];
+				range2 = searchValues[1];
+			}
+
+			readBTree();
+			_bt.rangeSearch(range1, range2, 1);
+			
+			
+
+		}
 		
 		
 

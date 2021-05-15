@@ -80,14 +80,24 @@ public class innerNode extends Node {
 
 		@Override
 		public void search(String key) {
-			// go through node + child to search for key or part of key
 			for (int i = 0; i < children.size(); i++) {
 				if (!children.get(i).isVisited()) {
 					children.get(i).search(key);
-					//System.out.println("Childresn " + children.get(i));
 					visited = true;
 				}
 			}
 		}
+		
+		
+		@Override
+		public void rangeSearch(String k1, String k2, int searchType) {
+			for (int i = 0; i < children.size(); i++) {
+				if (!children.get(i).isVisited()) {
+					children.get(i).rangeSearch(k1, k2, searchType);
+					visited = true;
+				}
+			}
+		}
+
 
 	}

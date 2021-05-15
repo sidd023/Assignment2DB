@@ -1,7 +1,10 @@
 import java.io.FileNotFoundException; 
 import java.io.FileOutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 
@@ -93,7 +96,28 @@ public class leafNode extends Node {
 			return visited;
 		}
 
-		
+		@Override
+		public void rangeSearch(String k1, String k2, int searchType) {
+			
+			visited = true;
+			for (int i = 0; i < keys.size(); i++) {
+				String s = keys.get(i); 
+				String v = values.get(i);
+				
+					int range1 = Integer.parseInt(k1);
+					int range2 = Integer.parseInt(k2);
+					String[] search = s.split("_");
+					int searchKey = Integer.parseInt(search[0]);
+					if(searchKey>=range1 && searchKey<=range2 )
+					{
+						System.out.println("Found in B+ Tree Range [" + k1 + "] " + constants.RANGE_DELIMITER + " [" 
+								+ k2 + "]: " + s + " - " + v);
+						
+					}
+				
+				
+			}
+		}
 
 		
 	}
