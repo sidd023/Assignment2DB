@@ -2,6 +2,9 @@
 
 Database Systems Assignment 2
 
+Compiling the code: (from src folder)
+javac *.java
+
 Loading Syntax: (adds into heap and tree)
 java dbload -p pagesize datafile
 eg:
