@@ -3,11 +3,10 @@ public class constants{
 
 	public static final int DBLOAD_ARG_COUNT = 3;
 	public static final int DBQUERY_ARG_COUNT = 3;
-	public static final int DBQUERY_ARG_COUNT_BPLUS = 2;
-
-	public static final int DBLOAD_PAGE_SIZE_ARG = 1;
-	public static final int DBQUERY_PAGE_SIZE_ARG = 1;
-	public static final int DATAFILE_ARG = 2;
+	
+	//public static final int DBLOAD_PAGE_SIZE_ARG = 1;
+	//public static final int DBQUERY_PAGE_SIZE_ARG = 1;
+	//public static final int DATAFILE_ARG = 2;
 	public static final int STD_NAME_SIZE = 24;
 	public static final int ID_SIZE = 4;
 	public static final int DATE_SIZE = 8;
@@ -20,17 +19,10 @@ public class constants{
 	public static final int SENSORNAME_SIZE = 38;
 	public static final int COUNTS_SIZE = 4;
 	public static final int PAGE_NUMBER = 6;
-
-
 	public static final int MAX_NUM_KEYS = 1024;
 	public static final String    BPLUS_TREE_FILE_NAME = "bt.dat";
 	public static final Boolean   SAVE_TREE_TO_DISK = true;
-	public static final Boolean   SHOW_TREE_KEYS = false;
 	public static final int       TREE_RECORD_SIZE = 36;
-	public static final boolean   DEBUG_MODE = false;
-	public static final boolean   DEBUG_CHK_BUILD = true;
-	public static final boolean   TEST_RUN_SHOW_INSERT = false;
-	public static final String    TEST_RUN_SEARCH_STR = "9_12/28/2009 01:00:00 AM";
 	public static final String    RANGE_DELIMITER = "--"; 
 	public static final int       RANGE_KEY_ID = 1;
 	public static final int       RANGE_KEY_DATE = 2;
