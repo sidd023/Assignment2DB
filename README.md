@@ -40,5 +40,3 @@ java dbquery -bdate range1—-range2 pagesize
 eg:
 Java dbquery -bdate “02/28/2012”—-“03/28/2012” 4096
 
-
-
