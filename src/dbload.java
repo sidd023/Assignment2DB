@@ -34,6 +34,7 @@ public class dbload {
       dbload load = new dbload();
       if (args.length == constants.DBLOAD_ARG_COUNT) {
          if (args[0].equals("-p") && load.isInteger(args[1])) {
+        	 System.out.println("Adding into Heap and tree......");
             load.readFile(args[2], Integer.parseInt(args[1]));
          }
       } else {

@@ -72,7 +72,7 @@ public class dbquery {
             long finishTime = 0;
             startTime = System.nanoTime();
             // search within the tree
-            _bt.search_inTree(args[1]);
+            _bt.searchTree(args[1]);
             finishTime = System.nanoTime();
             long timeInMilliseconds = (finishTime - startTime) / constants.MILLISECONDS_PER_SECOND;
             System.out.println("Time taken: " + timeInMilliseconds + " ms");
@@ -168,13 +168,16 @@ public class dbquery {
       String[] parts = offset.split("_");
       // offset consist of pagenumber_recordNumber
       // eg, 027362_12
+      
       long pageNum = Long.valueOf(parts[0]);
-      int i = Integer.parseInt(parts[1]) - 1;
-
+      int i = Integer.parseInt(parts[1])-1;
+    
+      
+      //int i = Integer.parseInt(parts[1])-1;
       if (i < 0)
          i = 0;
       
-      pageNum *= pageSize;
+      pageNum = pageNum* pageSize;
       String datafile = "heap." + pageSize;
       int numBytesInOneRecord = constants.TOTAL_SIZE;
       int numBytesInSdtnameField = constants.STD_NAME_SIZE;
@@ -204,12 +207,13 @@ public class dbquery {
          try {
             raf = new RandomAccessFile(datafile, "rw");
             raf.seek((long) pageNum);
-            raf.read(page, 0, pageSize);
+            raf.read(page);
          } catch (FileNotFoundException e) {
             e.printStackTrace();
          } finally {
             raf.close();
          }
+         
 
          // Copy record's SdtName (field is located at multiples of the total record byte length)
          System.arraycopy(page, (i * numBytesInOneRecord), sdtnameBytes, 0, numBytesInSdtnameField);

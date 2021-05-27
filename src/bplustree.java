@@ -31,8 +31,8 @@ public class bplustree {
 	}
 
 	// search for a key in the tree
-	public void search_inTree(String key) {
-		node.search(key);
+	public void searchTree(String key) {
+		node.search_inTree(key);
 	}
 
 	// traverse the whole tree
@@ -62,7 +62,7 @@ public class bplustree {
 		}
 
 		// search for key within the tree
-		abstract void search(String key); 
+		abstract void search_inTree(String key); 
 
 		// traverse the entire tree
 		abstract void traverse(FileOutputStream fos); 
@@ -87,6 +87,8 @@ public class bplustree {
 		abstract boolean isOverflow(); 
 	}
 
+	
+	
 	public class leafNode extends Node {
 
 		List < String > values;
@@ -106,7 +108,7 @@ public class bplustree {
 
 		// search among the keys
 		@Override
-		public void search(String key) {
+		public void search_inTree(String key) {
 			// find the key in the tree
 			visited = true;
 			for (int i = 0; i < keys.size(); i++) {
@@ -250,6 +252,7 @@ public class bplustree {
 		}
 	}
 	
+	
 	public class innerNode extends Node {
 		List < Node > children;
 		Boolean visited = false;
@@ -265,11 +268,11 @@ public class bplustree {
 		}
 
 		@Override
-		public void search(String key) {
+		public void search_inTree(String key) {
 			// iterate through the child node to search for a key
 			for (int i = 0; i < children.size(); i++) {
 				if (!children.get(i).isVisited()) {
-					children.get(i).search(key);
+					children.get(i).search_inTree(key);
 					// set visited to prevent from double visitation
 					visited = true;
 				}
@@ -415,4 +418,7 @@ public class bplustree {
 			return null;
 		}
 	}
+
+	
+	
 }
