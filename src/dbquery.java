@@ -128,7 +128,7 @@ public class dbquery {
 
    // file stored in disk is loaded into tree 
    public static void readBTree() {
-      File btreeFilename = new File(constants.BPLUS_TREE_FILE_NAME);
+      File btreeFilename = new File(constants.TREE_FILE_NAME);
       try (FileInputStream fis = new FileInputStream(btreeFilename)) {
          boolean haveNextRecord = true;
          while (haveNextRecord) {

@@ -14,11 +14,9 @@ public class constants{
 	public static final int SENSORID_SIZE = 4;
 	public static final int SENSORNAME_SIZE = 38;
 	public static final int COUNTS_SIZE = 4;
-	public static final int PAGE_NUMBER = 6;
-	public static final int MAX_NUM_KEYS = 1024;
-	public static final String    BPLUS_TREE_FILE_NAME = "bt.dat";
-	public static final Boolean   SAVE_TREE_TO_DISK = true;
 	public static final int       TREE_RECORD_SIZE = 36;
+	public static final int MAX_NUM_KEYS = 1024;
+	public static final String    TREE_FILE_NAME = "bt.dat";
 	public static final String    RANGE_DELIMITER = "--"; 
 	public static final int       RANGE_KEY_ID = 1;
 	public static final int       RANGE_KEY_DATE = 2;

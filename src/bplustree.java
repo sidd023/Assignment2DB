@@ -7,7 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.io.FileNotFoundException;
 
-
+// bplus tree implementation
 public class bplustree {
 
 	private int maxKeys;
@@ -183,7 +183,7 @@ public class bplustree {
 					// write into the file
 					fos.write(record);
 				} catch (FileNotFoundException e) {
-					System.out.println("File " + constants.BPLUS_TREE_FILE_NAME + " not found.");
+					System.out.println("File " + constants.TREE_FILE_NAME + " not found.");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
